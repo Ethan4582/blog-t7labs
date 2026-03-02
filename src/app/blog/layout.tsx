@@ -1,14 +1,15 @@
 import Navbar from "@/src/components/Navbar";
 import Sidebar from "@/src/components/Sidebar";
+import { Metadata } from "next";
 
-export const metadata = {
-   title: "tae7labs — Blog",
-   description: "Explore components and documentation for tae7labs.",
+export const metadata: Metadata = {
+   title: "VeeMeet Docs — Blog",
+   description: "Explore components and documentation for VeeMeet Docs.",
 };
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
    return (
-      <div className="min-h-screen bg-[#0a0a0a]">
+      <div className="min-h-screen bg-background text-foreground">
          <Navbar />
          <div className="flex pt-[65px]">
             {/* Left sidebar */}

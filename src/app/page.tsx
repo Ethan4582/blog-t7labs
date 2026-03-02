@@ -11,7 +11,7 @@ export default function RootPage() {
   }, [router]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen text-white/20 font-mono text-sm tracking-widest">
+    <div className="flex items-center justify-center min-h-screen text-muted-foreground font-mono text-sm tracking-widest bg-background">
       <meta httpEquiv="refresh" content="0; url=/blog" />
       REDIRECTING TO BLOG...
     </div>

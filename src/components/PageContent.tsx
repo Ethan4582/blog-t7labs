@@ -113,32 +113,32 @@ export default function PageContent({ group, page }: PageContentProps) {
                ))}
 
                {/* Code-like block */}
-               <div className="mt-8 rounded-lg border border-white/[0.05] bg-[#111] overflow-hidden">
-                  <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/[0.05]">
-                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
-                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
-                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
-                     <span className="ml-3 text-[11px] text-white/20 font-mono">{section.id}.ts</span>
+               <div className="mt-8 rounded-lg border border-border/30 bg-muted/30 overflow-hidden shadow-sm">
+                  <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border/30 bg-muted/10">
+                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+                     <span className="ml-3 text-[11px] text-muted-foreground/60 font-mono font-bold">{section.id}.ts</span>
                   </div>
-                  <div className="px-5 py-4 font-mono text-[12px] leading-6 text-white/25">
-                     <span className="text-purple-400/60">export</span>{" "}
-                     <span className="text-blue-400/60">const</span>{" "}
-                     <span className="text-[#c8ff00]/50">{section.id.replace(/-/g, "_")}</span>{" "}
-                     <span className="text-white/30">=</span>{" "}
-                     <span className="text-orange-400/50">{`{`}</span>
+                  <div className="px-5 py-4 font-mono text-[12px] leading-6 text-foreground/70">
+                     <span className="text-purple-500/80">export</span>{" "}
+                     <span className="text-blue-500/80">const</span>{" "}
+                     <span className="text-primary font-bold">{section.id.replace(/-/g, "_")}</span>{" "}
+                     <span className="text-foreground/50">=</span>{" "}
+                     <span className="text-orange-500/80">{`{`}</span>
                      <br />
                      {"  "}
-                     <span className="text-white/25">name:</span>{" "}
-                     <span className="text-green-400/50">"{section.title}"</span>
-                     <span className="text-orange-400/50">,</span>
+                     <span className="text-foreground/60">name:</span>{" "}
+                     <span className="text-green-600/80">"{section.title}"</span>
+                     <span className="text-orange-500/80">,</span>
                      <br />
                      {"  "}
-                     <span className="text-white/25">page:</span>{" "}
-                     <span className="text-green-400/50">"{page.slug}"</span>
-                     <span className="text-orange-400/50">,</span>
+                     <span className="text-foreground/60">page:</span>{" "}
+                     <span className="text-green-600/80">"{page.slug}"</span>
+                     <span className="text-orange-500/80">,</span>
                      <br />
-                     <span className="text-orange-400/50">{`}`}</span>
-                     <span className="text-white/30">;</span>
+                     <span className="text-orange-500/80">{`}`}</span>
+                     <span className="text-foreground/50">;</span>
                   </div>
                </div>
             </motion.section>

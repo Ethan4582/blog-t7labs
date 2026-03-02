@@ -13,7 +13,7 @@ export default function BlogIndexPage() {
    }, [router, firstPage]);
 
    return (
-      <div className="flex items-center justify-center min-h-screen text-white/20 font-mono text-sm tracking-widest uppercase text-center">
+      <div className="flex items-center justify-center min-h-screen text-muted-foreground font-mono text-sm tracking-widest uppercase text-center bg-background">
          <meta httpEquiv="refresh" content={`0; url=${firstPage}`} />
          Directing to docs...
       </div>
