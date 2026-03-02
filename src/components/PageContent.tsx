@@ -46,17 +46,6 @@ export default function PageContent({ group, page }: PageContentProps) {
          animate="visible"
          className="flex-1 min-w-0 px-10 py-12"
       >
-         {/* Breadcrumb */}
-         <motion.div variants={sectionVariants} className="flex items-center gap-2 mb-8 font-sans">
-            <span className="text-[12px] text-muted-foreground/60 font-bold uppercase tracking-widest">
-               {group.title}
-            </span>
-            <span className="text-muted-foreground/30 text-xs">/</span>
-            <span className="text-[12px] text-primary/80 font-bold uppercase tracking-widest">
-               {page.title}
-            </span>
-         </motion.div>
-
          {/* Page Title */}
          <motion.h1
             variants={sectionVariants}
@@ -64,7 +53,7 @@ export default function PageContent({ group, page }: PageContentProps) {
          >
             {page.title}
          </motion.h1>
-         <motion.p variants={sectionVariants} className="text-muted-foreground text-lg mb-14 leading-relaxed max-w-2xl font-sans">
+         <motion.p variants={sectionVariants} className="text-foreground/80 text-lg mb-14 leading-relaxed max-w-2xl font-sans">
             Placeholder overview for {page.title} under {group.title}. Scroll down to explore all sections.
          </motion.p>
 
@@ -81,7 +70,7 @@ export default function PageContent({ group, page }: PageContentProps) {
             >
                {/* Section label */}
                <div className="flex items-center gap-3 mb-6 font-sans">
-                  <span className="text-[10px] font-black text-primary/60 uppercase tracking-[0.3em]">
+                  <span className="text-[10px] font-black text-primary/80 uppercase tracking-[0.3em]">
                      Section {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="h-px flex-1 bg-border/20" />
@@ -99,7 +88,7 @@ export default function PageContent({ group, page }: PageContentProps) {
                      </div>
                      <div>
                         <p className="text-sm font-bold text-foreground mb-1.5">{section.title}</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
+                        <p className="text-sm text-foreground/75 leading-relaxed max-w-lg">
                            This section covers the {section.title.toLowerCase()} topics within {page.title}. Detailed documentation and examples follow below.
                         </p>
                      </div>
@@ -107,7 +96,7 @@ export default function PageContent({ group, page }: PageContentProps) {
                </div>
 
                {PLACEHOLDER_PARAS.map((para, pi) => (
-                  <p key={pi} className="text-base text-foreground/70 leading-8 mb-6 font-sans">
+                  <p key={pi} className="text-base text-foreground/90 leading-8 mb-6 font-sans">
                      {para}
                   </p>
                ))}

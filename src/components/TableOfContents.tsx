@@ -11,15 +11,9 @@ interface TableOfContentsProps {
 
 export default function TableOfContents({ sections }: TableOfContentsProps) {
    const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || "");
-   const [scrollProgress, setScrollProgress] = useState(0);
 
    useEffect(() => {
       const handleScroll = () => {
-         // Calculate overall scroll progress
-         const scrollTop = window.scrollY;
-         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-         const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
-         setScrollProgress(progress);
 
          // Determine which section is currently in view
          let currentSection = sections[0]?.id || "";
@@ -50,28 +44,10 @@ export default function TableOfContents({ sections }: TableOfContentsProps) {
 
    return (
       <aside className="w-[220px] min-w-[220px] h-[calc(100vh-65px)] sticky top-[65px] overflow-y-auto py-8 px-5 custom-scrollbar font-sans">
-         {/* Progress Bar */}
-         <div className="mb-6">
-            <div className="flex items-center justify-between mb-2">
-               <span className="text-[11px] font-bold text-foreground/30 uppercase tracking-widest">
-                  Progress
-               </span>
-               <span className="text-[11px] font-mono text-foreground/25">
-                  {Math.round(scrollProgress * 100)}%
-               </span>
-            </div>
-            <div className="h-[3px] bg-border/20 rounded-full overflow-hidden">
-               <motion.div
-                  className="h-full bg-gradient-to-r from-primary to-primary/60 rounded-full"
-                  style={{ width: `${scrollProgress * 100}%` }}
-                  transition={{ duration: 0.1 }}
-               />
-            </div>
-         </div>
 
          {/* Table of Contents heading */}
-         <h3 className="text-[11px] font-bold text-foreground/30 uppercase tracking-widest mb-4">
-            On this page
+         <h3 className="text-[11px] font-black text-foreground/70 uppercase tracking-widest mb-4">
+            Table of Contents
          </h3>
 
          {/* Section Links */}
@@ -88,8 +64,8 @@ export default function TableOfContents({ sections }: TableOfContentsProps) {
                      className={clsx(
                         "relative w-full text-left pl-4 py-2 text-[13px] transition-all duration-200 block cursor-pointer",
                         isActive
-                           ? "text-primary font-bold"
-                           : "text-foreground/40 hover:text-foreground/70"
+                           ? "text-primary font-black scale-[1.02] origin-left"
+                           : "text-foreground/60 hover:text-foreground/90"
                      )}
                   >
                      {isActive && (

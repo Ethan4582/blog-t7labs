@@ -26,7 +26,7 @@ export default function Sidebar() {
    };
 
    return (
-      <aside className="w-[260px] min-w-[260px] h-[calc(100vh-65px)] sticky top-[65px] overflow-y-auto border-r border-border/30 bg-background/50 backdrop-blur-md custom-scrollbar">
+      <aside className="w-[260px] min-w-[260px] h-[calc(100vh-65px)] sticky top-[65px] overflow-y-auto border-r border-border/40 bg-background/50 backdrop-blur-md custom-scrollbar">
          <nav className="py-5 px-4">
             {blogData.map((group, groupIndex) => (
                <motion.div
@@ -42,8 +42,8 @@ export default function Sidebar() {
                      className={clsx(
                         "w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[13px] font-bold tracking-wide uppercase transition-all duration-200 cursor-pointer group font-sans",
                         openGroups[group.slug]
-                           ? "text-foreground bg-primary/10"
-                           : "text-foreground/50 hover:text-foreground/80 hover:bg-muted/30"
+                           ? "text-foreground bg-muted font-black"
+                           : "text-foreground/65 hover:text-foreground/90 hover:bg-muted/40 font-black"
                      )}
                   >
                      <span>{group.title}</span>
@@ -77,8 +77,8 @@ export default function Sidebar() {
                                        className={clsx(
                                           "block px-3 py-2 rounded-md text-[13px] transition-all duration-200 relative font-sans",
                                           isActive
-                                             ? "text-primary bg-primary/5 font-bold"
-                                             : "text-foreground/50 hover:text-foreground/80 hover:bg-muted/20"
+                                             ? "text-primary bg-primary/15 font-black"
+                                             : "text-foreground/65 hover:text-foreground/95 hover:bg-muted/30"
                                        )}
                                     >
                                        {isActive && (
