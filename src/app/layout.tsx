@@ -25,8 +25,19 @@ const robotoSlab = Roboto_Slab({
 import Navbar from "@/src/components/Navbar";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "Tae7labs Dashboard",
   description: "Explore beautifully crafted components and patterns by Tae7labs.",
+  icons: {
+    icon: "/assets/darklogo.png",
+    shortcut: "/assets/darklogo.png",
+    apple: "/assets/darklogo.png",
+  },
+  openGraph: {
+    title: "Tae7labs Dashboard",
+    description: "Explore beautifully crafted components and patterns by Tae7labs.",
+    images: ["/assets/darklogo.png"],
+  },
 };
 
 export default function RootLayout({

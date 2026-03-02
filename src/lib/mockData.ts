@@ -1,4 +1,29 @@
-interface Tutorial {
+export interface Section {
+   id: string;
+   title: string;
+}
+
+export interface PageItem {
+   title: string;
+   slug: string;
+   sections: Section[];
+}
+
+export interface ToggleGroup {
+   title: string;
+   slug: string;
+   pages: PageItem[];
+}
+
+export interface Product {
+   id: string;
+   title: string;
+   description: string;
+   date: string;
+   image: string;
+}
+
+export interface Tutorial {
    id: string;
    title: string;
    description: string;
@@ -8,67 +33,103 @@ interface Tutorial {
    category: string;
 }
 
-interface Product {
-   id: string;
-   title: string;
-   description: string;
-   date: string;
-   image: string;
-}
-
 export const recentTutorials: Tutorial[] = [
    {
       id: "1",
-      title: "Mask Section Transition",
-      description: "A website tutorial featuring a scroll animation using an SVG Mask to create a section transition, made with React, Framer Motion.",
-      date: "June 3, 2024",
-      tag: "SCROLL",
-      category: "Scroll",
+      title: "Water Ripple Hover Effect ",
+      description: "Tutorial rebuilding a water ripple hover effect that fluidly distorts text using Three.js, React, and GLSL shaders.",
+      date: "March 3, 2026",
+      tag: "THREE.JS",
+      category: "Three.js",
       image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800",
    },
-   {
-      id: "2",
-      title: "Mouse Image Distortion",
-      description: "A website animation featuring an image distortion in a curved, using the sin function, React, React Three Fiber and Framer Motion.",
-      date: "June 3, 2024",
-      tag: "MOUSE",
-      category: "Mouse",
-      image: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&q=80&w=800",
-   },
-   {
-      id: "3",
-      title: "Background Image Parallax",
-      description: "A website animation featuring a background image moving on scroll in a parallax motion, made with Next.js app.",
-      date: "May 25, 2024",
-      tag: "SCROLL",
-      category: "Scroll",
-      image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=800",
-   },
+
 ];
 
 export const featuredProducts: Product[] = [
    {
       id: "p1",
-      title: "Web Animation Course",
-      description: "A Front End Animation Course featuring animations built with Next.js, Framer Motion, GSAP and more.",
-      date: "Sept 15, 2023",
-      image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800",
+      title: "templete.t7labs",
+      description: "Free open-source hub offering premium templates for design, portfolios, or startups to help founders and creators",
+      date: "February 5, 2026",
+      image: "/assets/building2.png",
    },
    {
       id: "p2",
-      title: "UI Design Kit",
-      description: "High-quality dashboard UI Kit with hundreds of components for Figma and Framer.",
-      date: "August 20, 2023",
-      image: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800",
+      title: "bg-design.t7labs",
+      description: "High-quality AI-generated fresh background images that make your hero section glow.",
+      date: "March 1, 2026",
+      image: "/assets/building1.png",
    },
 ];
 
 export const allTutorials: Partial<Tutorial>[] = [
-   { date: "June 3, 2024", title: "Mask Section Transition", category: "Scroll" },
-   { date: "May 25, 2024", title: "Background Image Parallax", category: "Scroll" },
-   { date: "May 25, 2024", title: "Text Parallax", category: "Scroll" },
-   { date: "May 21, 2024", title: "Sticky Footer", category: "Scroll" },
-   { date: "May 13, 2024", title: "Perspective Section Transition", category: "Scroll" },
-   { date: "February 23, 2024", title: "Text Along Path", category: "Mouse" },
-   { date: "January 31, 2024", title: "SVG Path On Scroll", category: "Scroll" },
+   { date: "March 3, 2026", title: "Mask Section Transition", category: "Scroll" },
 ];
+
+export const blogNavigation: ToggleGroup[] = [
+   {
+      title: "Getting Started",
+      slug: "getting-started",
+      pages: [
+         {
+            title: "Introduction",
+            slug: "intro",
+            sections: [
+               { id: "overview", title: "Overview" },
+               { id: "installation", title: "Installation" },
+               { id: "quick-start", title: "Quick Start" },
+            ],
+         },
+         {
+            title: "Background",
+            slug: "background",
+            sections: [
+               { id: "history", title: "History" },
+               { id: "motivation", title: "Motivation" },
+               { id: "architecture", title: "Architecture" },
+            ],
+         },
+         {
+            title: "Template",
+            slug: "template",
+            sections: [
+               { id: "basic-template", title: "Basic Template" },
+               { id: "advanced-template", title: "Advanced Template" },
+               { id: "customization", title: "Customization" },
+            ],
+         },
+      ],
+   },
+   {
+      title: "Three.js",
+      slug: "Three.js",
+      pages: [
+         {
+            title: "Water Ripple Hover Effect ",
+            slug: "water-ripple-hover-effect",
+            sections: [
+               { id: "initializing-project", title: "Initializing the project" },
+               { id: "root-layout", title: "Root Layout Configuration" },
+               { id: "ripple-component", title: "Ripple Effect Component & Shaders" },
+            ],
+         },
+      ],
+   },
+];
+
+export function findPageBySlug(slugPath: string[]): { group: ToggleGroup; page: PageItem } | null {
+   if (slugPath.length !== 2) return null;
+   const [groupSlug, pageSlug] = slugPath;
+   const group = blogNavigation.find((g) => g.slug === groupSlug);
+   if (!group) return null;
+   const page = group.pages.find((p) => p.slug === pageSlug);
+   if (!page) return null;
+   return { group, page };
+}
+
+export function getFirstPage(): string {
+   const firstGroup = blogNavigation[0];
+   const firstPage = firstGroup.pages[0];
+   return `/blog/${firstGroup.slug}/${firstPage.slug}`;
+}

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
-import type { Section } from "@/src/lib/blogData";
+import type { Section } from "@/src/lib/mockData";
 
 interface TableOfContentsProps {
    sections: Section[];
@@ -43,7 +43,7 @@ export default function TableOfContents({ sections }: TableOfContentsProps) {
    };
 
    return (
-      <aside className="w-[220px] min-w-[220px] h-[calc(100vh-65px)] sticky top-[65px] overflow-y-auto py-8 px-5 custom-scrollbar font-sans">
+      <aside className="w-[220px] min-w-[220px] h-[calc(100vh-65px)] sticky top-[65px] overflow-y-auto py-8 pl-5 pr-0 custom-scrollbar font-sans">
 
          {/* Table of Contents heading */}
          <h3 className="text-[11px] font-black text-foreground/70 uppercase tracking-widest mb-4">

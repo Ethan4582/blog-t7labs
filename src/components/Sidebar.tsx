@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { blogData } from "@/src/lib/blogData";
+import { blogNavigation } from "@/src/lib/mockData";
+import type { ToggleGroup } from "@/src/lib/mockData";
 import clsx from "clsx";
 
 export default function Sidebar() {
@@ -14,7 +15,7 @@ export default function Sidebar() {
    const [openGroups, setOpenGroups] = useState<Record<string, boolean>>(
       () => {
          const initial: Record<string, boolean> = {};
-         blogData.forEach((group) => {
+         blogNavigation.forEach((group: ToggleGroup) => {
             initial[group.slug] = true;
          });
          return initial;
@@ -29,7 +30,7 @@ export default function Sidebar() {
       <aside className="w-[260px] min-w-[260px] h-[calc(100vh-65px)] sticky top-[65px] overflow-y-auto border-r border-border/40 bg-background/50 backdrop-blur-md custom-scrollbar">
          <nav className="py-5 px-4">
             <div className="space-y-1">
-               {blogData.map((group, groupIndex) => (
+               {blogNavigation.map((group: ToggleGroup, groupIndex: number) => (
                   <motion.div
                      key={group.slug}
                      initial={{ opacity: 0, x: -10 }}
@@ -67,7 +68,7 @@ export default function Sidebar() {
                               className="overflow-hidden"
                            >
                               <div className="ml-2 mt-0.5 border-l border-border/20 pl-2">
-                                 {group.pages.map((page) => {
+                                 {group.pages.map((page: any) => {
                                     const isIntro = group.slug === "getting-started" && page.slug === "intro";
                                     const href = isIntro ? "/blog" : `/blog/${group.slug}/${page.slug}`;
                                     const isActive = pathname === href;
