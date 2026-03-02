@@ -27,8 +27,32 @@ export default function Sidebar() {
 
    return (
       <aside className="w-[260px] min-w-[260px] h-[calc(100vh-65px)] sticky top-[65px] overflow-y-auto border-r border-border/40 bg-background/50 backdrop-blur-md custom-scrollbar">
-         <nav className="py-5 px-4">
-            {blogData.map((group, groupIndex) => (
+         <nav className="py-5 px-4 space-y-6">
+            {/* Top Level Intro Link */}
+            <div className="px-3">
+               <Link
+                  href="/blog"
+                  className="relative flex items-center group/link"
+               >
+                  {pathname === "/blog" && (
+                     <motion.div
+                        layoutId="sidebar-active"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[18px] w-[3px] h-4 bg-primary rounded-full"
+                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                     />
+                  )}
+                  <span className={clsx(
+                     "inline-block px-3 py-2 rounded-lg text-[14px] transition-all w-full",
+                     pathname === "/blog"
+                        ? "text-primary bg-primary/10 font-bold"
+                        : "text-foreground/70 hover:text-foreground hover:bg-muted/40 font-medium"
+                  )}>
+                     Intro
+                  </span>
+               </Link>
+            </div>
+
+            <div className="space-y-1">
                <motion.div
                   key={group.slug}
                   initial={{ opacity: 0, x: -10 }}
@@ -100,6 +124,7 @@ export default function Sidebar() {
                   </AnimatePresence>
                </motion.div>
             ))}
+            </div>
          </nav>
       </aside>
    );
