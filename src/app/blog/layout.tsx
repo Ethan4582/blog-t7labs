@@ -1,4 +1,4 @@
-import Sidebar from "@/src/components/Sidebar";
+import Sidebar from "@/src/components/navbar/Sidebar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

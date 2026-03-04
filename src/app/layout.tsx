@@ -22,7 +22,7 @@ const robotoSlab = Roboto_Slab({
   display: "swap",
 });
 
-import Navbar from "@/src/components/Navbar";
+import Navbar from "@/src/components/navbar/Navbar";
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),

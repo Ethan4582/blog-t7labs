@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu } from "lucide-react";
 import HamburgerMenu from "./HamburgerMenu";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../ThemeToggle";
 import { motion } from "framer-motion";
 
 export default function Navbar() {

@@ -27,7 +27,7 @@ export default function Sidebar() {
    };
 
    return (
-      <aside className="w-[260px] min-w-[260px] h-[calc(100vh-65px)] sticky top-[65px] overflow-y-auto border-r border-border/40 bg-background/50 backdrop-blur-md custom-scrollbar">
+      <aside className="hidden md:block w-[260px] min-w-[260px] h-[calc(100vh-65px)] sticky top-[65px] overflow-y-auto border-r border-border/40 bg-background/50 backdrop-blur-md custom-scrollbar">
          <nav className="py-5 px-4">
             <div className="space-y-1">
                {blogNavigation.map((group: ToggleGroup, groupIndex: number) => (
