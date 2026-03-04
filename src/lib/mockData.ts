@@ -1,3 +1,5 @@
+import { assets } from "./asset_data";
+
 export interface Section {
    id: string;
    title: string;
@@ -33,6 +35,7 @@ export interface Tutorial {
    date: string;
    tag: string;
    image: string;
+   gif?: string;
    category: string;
    slug?: string; // Adding slug for linking if needed
 }
@@ -42,15 +45,16 @@ export const recentTutorials: Tutorial[] = [
       id: "1",
       title: "Water Ripple Hover Effect",
       description: "Tutorial rebuilding a water ripple hover effect that fluidly distorts text using Three.js, React, and GLSL shaders.",
-      galleryDescription: "Mesmerizing GPU-powered ripples interacting with typography for an organic feel.",
+      galleryDescription: "Mesmerizing ripples interacting with typography for an organic feel.",
       demoInstructions: "Move your mouse gently over the canvas to see the water ripple effect in action.",
       date: "March 3, 2026",
-      tag: "THREE.JS",
-      category: "Three.js",
-      image: "https://res.cloudinary.com/dbgee370f/image/upload/v1772525777/Screenshot_2026-03-03_124655_lgc6rs.png",
+      tag: "SHADER",
+      category: "SHADER",
+      image: assets.tutorials.waterRipple.image,
+      gif: assets.tutorials.waterRipple.gif,
       slug: "water-ripple-hover-effect"
    },
-
+   
 ];
 
 export const featuredProducts: Product[] = [
@@ -59,14 +63,14 @@ export const featuredProducts: Product[] = [
       title: "templete.t7labs",
       description: "Free open-source hub offering premium templates for design, portfolios, or startups to help founders and creators",
       date: "February 5, 2026",
-      image: "/assets/building2.png",
+      image: assets.products.template,
    },
    {
       id: "p2",
       title: "bg-design.t7labs",
       description: "High-quality AI-generated fresh background images that make your hero section glow.",
       date: "March 1, 2026",
-      image: "/assets/building1.png",
+      image: assets.products.bgDesign,
    },
 ];
 
@@ -89,11 +93,17 @@ export const blogNavigation: ToggleGroup[] = [
                { id: "quick-start", title: "Quick Start" },
             ],
          },
+         {
+            title: "Gallery",
+            slug: "gallery",
+            date: "Mar 3, 2026",
+            sections: [],
+         }
       ],
    },
    {
-      title: "Three.js",
-      slug: "Three.js",
+      title: "SHADER",
+      slug: "SHADER",
       pages: [
          {
             title: "Water Ripple Hover Effect ",
@@ -107,6 +117,7 @@ export const blogNavigation: ToggleGroup[] = [
          },
       ],
    },
+   
 ];
 
 export function findPageBySlug(slugPath: string[]): { group: ToggleGroup; page: PageItem } | null {

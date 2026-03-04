@@ -10,18 +10,16 @@ interface HamburgerMenuProps {
 }
 
 const menuItems = [
-   { label: "Projects", href: "/blog" },
-   { label: "Agency", href: "/blog" },
-   { label: "Expertise", href: "/blog" },
-   { label: "Careers", href: "/blog" },
-   { label: "Contact", href: "/blog" },
+   { label: "Agency", href: "https://tea7labs.vercel.app/" },
+   { label: "Hire Me", href: "https://ash-cv.vercel.app/" },
+   { label: "Contact", href: "mailto:singhashirwad2003@gmail.com" },
 ];
 
 const socialLinks = [
-   { label: "Facebook", href: "#" },
-   { label: "Instagram", href: "#" },
-   { label: "LinkedIn", href: "#" },
-   { label: "Twitter", href: "#" },
+   { label: "Resume", href: "https://drive.google.com/file/d/1HeCJcPd-Q9hqTWnfUVATOB3liYAVUh_V/view" },
+   { label: "Portfolio", href: "https://ash-cv.vercel.app/" },
+   { label: "LinkedIn", href: "https://www.linkedin.com/in/ashirwad08singh/" },
+   { label: "Twitter", href: "https://x.com/SinghAshir65848" },
 ];
 
 const containerVariants: Variants = {

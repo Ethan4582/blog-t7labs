@@ -102,14 +102,26 @@ export default function PageContent({ group, page, post }: PageContentProps) {
             {/* 1) HERO SECTION */}
             {hasPost && (
                <motion.div variants={sectionVariants} className="mb-16">
-                  <div className="flex items-center gap-3 text-sm text-foreground/70 mb-8 font-medium">
-                     {/* Avatar Placeholder */}
-                     <div className="w-8 h-8 rounded-full bg-border flex items-center justify-center overflow-hidden">
-                        <svg className="w-4 h-4 text-muted-foreground" fill="currentColor" viewBox="0 0 24 24">
-                           <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                        </svg>
-                     </div>
-                     <span>{post.author || "Tae7labs"}</span>
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-foreground/70 mb-8 font-medium">
+                     {/* Beautiful Mention */}
+                     <a
+                        href={`https://twitter.com/${post.author?.replace(/\s+/g, '') || 'tae7labs'}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 pr-4 pl-1.5 py-1.5 rounded-full bg-border/40 hover:bg-primary/10 transition-colors border border-border/40 hover:border-primary/20 group cursor-pointer"
+                     >
+                        <div className="w-6 h-6 rounded-full overflow-hidden bg-background">
+                           <img
+                              src={`https://unavatar.io/twitter/${post.author?.replace(/\s+/g, '') || 'tae7labs'}?fallback=https://api.dicebear.com/7.x/notionists/svg?seed=${post.author}`}
+                              alt={post.author || "Author"}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                           />
+                        </div>
+                        <span className="text-[13px] font-bold text-foreground/80 group-hover:text-primary transition-colors">
+                           @{post.author?.replace(/\s+/g, '') || "Tae7labs"}
+                        </span>
+                     </a>
+
                      <span className="text-border">/</span>
                      <span>{post.date}</span>
                      <span className="text-border">/</span>
@@ -130,11 +142,7 @@ export default function PageContent({ group, page, post }: PageContentProps) {
                      {page.title}
                   </h1>
 
-                  {post.subtitle && (
-                     <p className="text-lg md:text-xl text-foreground/50 mb-6 font-medium">
-                        {post.subtitle}
-                     </p>
-                  )}
+                 
 
                   {post.introduction && (
                      <p className="text-foreground/75 leading-relaxed text-lg mb-8 max-w-3xl">
@@ -160,16 +168,25 @@ export default function PageContent({ group, page, post }: PageContentProps) {
                      )}
                   </div>
 
-                  {/* Video Demo Section */}
-                  {(post.videoDemo || post.videoTutorial) && (
+                  {/* Video/GIF Demo Section */}
+                  {(post.gif || post.videoDemo || post.videoTutorial) && (
                      <div className="mt-12 rounded-2xl overflow-hidden border border-border/40 bg-card/40 backdrop-blur-sm shadow-2xl aspect-video lg:max-w-4xl mx-auto w-full group relative">
-                        <iframe
-                           src={post.videoDemo || post.videoTutorial?.replace("watch?v=", "embed/")}
-                           className="w-full h-full border-0"
-                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                           allowFullScreen
-                           title="Video Demo"
-                        />
+                        {post.gif ? (
+                           // eslint-disable-next-line @next/next/no-img-element
+                           <img
+                              src={post.gif}
+                              alt={`${page.title} autoplaying demo`}
+                              className="w-full h-full object-cover"
+                           />
+                        ) : (
+                           <iframe
+                              src={post.videoDemo || post.videoTutorial?.replace("watch?v=", "embed/")}
+                              className="w-full h-full border-0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              title="Video Demo"
+                           />
+                        )}
                         {/* Shadow over top/bottom edges for premium look */}
                         <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/10 rounded-2xl" />
                      </div>

@@ -4,6 +4,7 @@ import { findPageBySlug, blogNavigation } from "@/src/lib/mockData";
 import { getTutorialData } from "@/src/lib/blogData";
 import PageContent from "@/src/components/PageContent";
 import TableOfContents from "@/src/components/TableOfContents";
+import BlogGallery from "@/src/components/blog/BlogGallery";
 
 interface BlogPageProps {
    params: Promise<{ slug: string[] }>;
@@ -38,6 +39,11 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
 export default async function BlogSlugPage({ params }: BlogPageProps) {
    const { slug } = await params;
+
+   if (slug.join("/") === "getting-started/gallery") {
+      return <BlogGallery />;
+   }
+
    const result = findPageBySlug(slug);
 
    if (!result) notFound();
@@ -54,3 +60,4 @@ export default async function BlogSlugPage({ params }: BlogPageProps) {
       </>
    );
 }
+

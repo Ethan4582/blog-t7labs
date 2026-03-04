@@ -1,51 +1,52 @@
 import type { PostContent } from "../../types";
+import { assets } from "../../asset_data";
 
 export const waterRippleData = {
-   author: "Ashirwad Singh",
-   date: "March 3, 2026",
-   difficulty: "Intermediate",
-   subtitle: "Rebuild a mesmerising water ripple effect that distorts text on hover.",
-   introduction:
-      "A tutorial rebuilding a mesmerizing water ripple effect that distorts text on hover, creating a fluid, organic interaction using Three.js, React, and custom GLSL shaders.",
-   liveDemo: "http://localhost:3001/gallery/water-ripple",
-   sourceCode: "https://github.com/Ethan4582/demo-t7block/blob/master/src/components/Water_Ripple/index.jsx",
-   videoTutorial: "https://youtube.com/watch?v=dQw4w9WgXcQ",
-   videoDemo: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-   sections: [
-      {
-         id: "initializing-project",
-         title: "Initializing the project",
-         content: [
-            {
-               type: "paragraph",
-               text: "Let's start the project by creating a Next.js application. We can do that by running\n`npx create-next-app@latest client` inside of a terminal.",
-            },
-            {
-               type: "paragraph",
-               text: "We can delete everything in the `page.js`, `global.css` and `page.module.css` and add our own HTML and CSS, to start with a nice blank application.",
-            },
-            {
-               type: "list",
-               items: [
-                  "We will use Sass for the stylesheets, so we can run `npm i sass`.",
-                  "We will use Three.js for the animation, so we can run `npm i three`.",
-               ],
-            },
-         ],
-      },
-      {
-         id: "root-layout",
-         title: "Root Layout Configuration",
-         content: [
-            {
-               type: "paragraph",
-               text: "The main layout component will be placed at the root level so it's shared among all pages.",
-            },
-            {
-               type: "code",
-               name: "app/layout.jsx",
-               language: "jsx",
-               code: `import { Inter } from 'next/font/google'
+  author: "SinghAshir65848",
+  date: "March 3, 2026",
+  difficulty: "Intermediate",
+  subtitle: "Rebuild a mesmerising water ripple effect that distorts text on hover.",
+  introduction:
+    "A tutorial rebuilding a mesmerizing water ripple effect that distorts text on hover, creating a fluid, organic interaction using Three.js, React, and custom GLSL shaders.",
+  liveDemo: "http://localhost:3001/gallery/water-ripple",
+  sourceCode: "https://github.com/Ethan4582/demo-t7block/blob/master/src/components/Water_Ripple/index.jsx",
+  videoTutorial: assets.tutorials.waterRipple.video,
+  gif: assets.tutorials.waterRipple.gif,
+  sections: [
+    {
+      id: "initializing-project",
+      title: "Initializing the project",
+      content: [
+        {
+          type: "paragraph",
+          text: "Let's start the project by creating a Next.js application. We can do that by running\n`npx create-next-app@latest client` inside of a terminal.",
+        },
+        {
+          type: "paragraph",
+          text: "We can delete everything in the `page.js`, `global.css` and `page.module.css` and add our own HTML and CSS, to start with a nice blank application.",
+        },
+        {
+          type: "list",
+          items: [
+            "We will use Sass for the stylesheets, so we can run `npm i sass`.",
+            "We will use Three.js for the animation, so we can run `npm i three`.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "root-layout",
+      title: "Root Layout Configuration",
+      content: [
+        {
+          type: "paragraph",
+          text: "The main layout component will be placed at the root level so it's shared among all pages.",
+        },
+        {
+          type: "code",
+          name: "app/layout.jsx",
+          language: "jsx",
+          code: `import { Inter } from 'next/font/google'
 import './globals.css'
 import RippleEffect from '../components/RippleEffect';
 
@@ -66,22 +67,22 @@ export default function RootLayout({ children }) {
     </html>
   )
 }`,
-            },
-         ],
-      },
-      {
-         id: "ripple-component-structure",
-         title: "Ripple Effect Component Structure",
-         content: [
-            {
-               type: "paragraph",
-               text: "We'll create a dedicated component for the ripple effect. Inside the `components` folder, create a new folder named `RippleEffect` with the following files: `index.jsx`, `style.module.scss`, and `shaders.js`.",
-            },
-            {
-               type: "code",
-               name: "components/RippleEffect/index.jsx",
-               language: "jsx",
-               code: `'use client';
+        },
+      ],
+    },
+    {
+      id: "ripple-component-structure",
+      title: "Ripple Effect Component Structure",
+      content: [
+        {
+          type: "paragraph",
+          text: "We'll create a dedicated component for the ripple effect. Inside the `components` folder, create a new folder named `RippleEffect` with the following files: `index.jsx`, `style.module.scss`, and `shaders.js`.",
+        },
+        {
+          type: "code",
+          name: "components/RippleEffect/index.jsx",
+          language: "jsx",
+          code: `'use client';
 
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
@@ -110,12 +111,12 @@ export default function RippleEffect() {
   );
 }
 `,
-            },
-            {
-               type: "code",
-               name: "components/RippleEffect/style.module.scss",
-               language: "scss",
-               code: `.container {
+        },
+        {
+          type: "code",
+          name: "components/RippleEffect/style.module.scss",
+          language: "scss",
+          code: `.container {
   position: absolute;
   top: 0;
   left: 0;
@@ -134,22 +135,22 @@ export default function RippleEffect() {
   width: 100%;
   height: 100%;
 }`,
-            },
-         ],
-      },
-      {
-         id: "shader-code",
-         title: "Shader Code",
-         content: [
-            {
-               type: "paragraph",
-               text: "The core of the effect lives in the shaders. We'll create `shaders.js` and export the GLSL code as template strings. The simulation shader handles the wave propagation, while the render shader combines the wave texture with the text texture to produce the final distorted output.",
-            },
-            {
-               type: "code",
-               name: "components/RippleEffect/shaders.js",
-               language: "javascript",
-               code: `// Simulation Vertex Shader
+        },
+      ],
+    },
+    {
+      id: "shader-code",
+      title: "Shader Code",
+      content: [
+        {
+          type: "paragraph",
+          text: "The core of the effect lives in the shaders. We'll create `shaders.js` and export the GLSL code as template strings. The simulation shader handles the wave propagation, while the render shader combines the wave texture with the text texture to produce the final distorted output.",
+        },
+        {
+          type: "code",
+          name: "components/RippleEffect/shaders.js",
+          language: "javascript",
+          code: `// Simulation Vertex Shader
 export const simulationVertexShader = \`
   varying vec2 vUv;
   void main() {
@@ -230,22 +231,22 @@ export const renderFragmentShader = \`
     gl_FragColor = textColor;
   }
 \`;`,
-            },
-         ],
-      },
-      {
-         id: "threejs-setup",
-         title: "Three.js Setup Inside useEffect",
-         content: [
-            {
-               type: "paragraph",
-               text: "Now we'll fill the `useEffect` with the full Three.js logic. This includes creating the renderer, render targets, materials, and the animation loop. The ping-pong technique is used to update the wave simulation each frame.",
-            },
-            {
-               type: "code",
-               name: "components/RippleEffect/index.jsx (continued)",
-               language: "jsx",
-               code: `
+        },
+      ],
+    },
+    {
+      id: "threejs-setup",
+      title: "Three.js Setup Inside useEffect",
+      content: [
+        {
+          type: "paragraph",
+          text: "Now we'll fill the `useEffect` with the full Three.js logic. This includes creating the renderer, render targets, materials, and the animation loop. The ping-pong technique is used to update the wave simulation each frame.",
+        },
+        {
+          type: "code",
+          name: "components/RippleEffect/index.jsx (continued)",
+          language: "jsx",
+          code: `
   useEffect(() => {
      const canvas = canvasRef.current;
 
@@ -469,22 +470,22 @@ export const renderFragmentShader = \`
    
   }, []);
 `,
-            },
-         ],
-      },
-      {
-         id: "global-styles",
-         title: "Global Styles",
-         content: [
-            {
-               type: "paragraph",
-               text: "Update your global CSS to set the background and text color. This matches the original design.",
-            },
-            {
-               type: "code",
-               name: "app/globals.css",
-               language: "css",
-               code: `* {
+        },
+      ],
+    },
+    {
+      id: "global-styles",
+      title: "Global Styles",
+      content: [
+        {
+          type: "paragraph",
+          text: "Update your global CSS to set the background and text color. This matches the original design.",
+        },
+        {
+          type: "code",
+          name: "app/globals.css",
+          language: "css",
+          code: `* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -507,22 +508,22 @@ body {
   overflow-x: hidden;
   padding-top: 80px;
 }`,
-            },
-         ],
-      },
-      {
-         id: "using-the-component",
-         title: "Using the Component",
-         content: [
-            {
-               type: "paragraph",
-               text: "Now you can import and use the `RippleEffect` component in any page. For example, in `app/page.js`, you can add your content on top of the canvas.",
-            },
-            {
-               type: "code",
-               name: "app/page.js",
-               language: "jsx",
-               code: `import RippleEffect from '@/components/RippleEffect';
+        },
+      ],
+    },
+    {
+      id: "using-the-component",
+      title: "Using the Component",
+      content: [
+        {
+          type: "paragraph",
+          text: "Now you can import and use the `RippleEffect` component in any page. For example, in `app/page.js`, you can add your content on top of the canvas.",
+        },
+        {
+          type: "code",
+          name: "app/page.js",
+          language: "jsx",
+          code: `import RippleEffect from '@/components/RippleEffect';
 
 export default function Home() {
   return (
@@ -534,46 +535,46 @@ export default function Home() {
     </main>
   );
 }`,
-            },
-         ],
-      },
-      {
-         id: "customizing-parameters",
-         title: "Customizing the Animation",
-         content: [
-            {
-               type: "paragraph",
-               text: "You can tweak several uniforms to change the behavior of the ripple effect. Here are the key variables and their effects:",
-            },
-            {
-               type: "list",
-               items: [
-                  "`speed` – Controls how fast waves propagate (default: 0.5).",
-                  "`damping` – Determines how quickly waves fade out (default: 0.98). Lower values make waves disappear faster.",
-                  "`rippleStrength` – Intensity of the ripple created by the mouse (default: 0.5).",
-              
-                  "`offsetMultiplier` – In the render shader, you can adjust `wave * 0.02` to change distortion strength.",
-               ],
-            },
-            {
-               type: "paragraph",
-               text: "To make these adjustable via props, modify the component to accept them and pass them to the shader uniforms.",
-            },
-         ],
-      },
-      {
-         id: "wrapping-up",
-         title: "Wrapping Up",
-         content: [
-            {
-               type: "paragraph",
-               text: "You now have a smooth water ripple hover effect built with Three.js and Next.js. Customize the text, colors, and shaders to match your brand and add an interactive feel to your site.",
-            },
-            {
-               type: "paragraph",
-               text: "Special thanks to the original inspiration and the @CodeGrid[urlhttps://www.youtube.com/@codegrid] . Happy coding!",
-            },
-         ],
-      },
-   ],
+        },
+      ],
+    },
+    {
+      id: "customizing-parameters",
+      title: "Customizing the Animation",
+      content: [
+        {
+          type: "paragraph",
+          text: "You can tweak several uniforms to change the behavior of the ripple effect. Here are the key variables and their effects:",
+        },
+        {
+          type: "list",
+          items: [
+            "`speed` – Controls how fast waves propagate (default: 0.5).",
+            "`damping` – Determines how quickly waves fade out (default: 0.98). Lower values make waves disappear faster.",
+            "`rippleStrength` – Intensity of the ripple created by the mouse (default: 0.5).",
+
+            "`offsetMultiplier` – In the render shader, you can adjust `wave * 0.02` to change distortion strength.",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "To make these adjustable via props, modify the component to accept them and pass them to the shader uniforms.",
+        },
+      ],
+    },
+    {
+      id: "wrapping-up",
+      title: "Wrapping Up",
+      content: [
+        {
+          type: "paragraph",
+          text: "You now have a smooth water ripple hover effect built with Three.js and Next.js. Customize the text, colors, and shaders to match your brand and add an interactive feel to your site.",
+        },
+        {
+          type: "paragraph",
+          text: "Special thanks to the original inspiration and the @CodeGrid[urlhttps://www.youtube.com/@codegrid] . Happy coding!",
+        },
+      ],
+    },
+  ],
 };

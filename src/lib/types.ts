@@ -32,5 +32,6 @@ export interface PostContent {
    sourceCode?: string;
    videoTutorial?: string;
    videoDemo?: string;
+   gif?: string;
    sections: PostSection[];
 }
