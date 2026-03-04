@@ -1,4 +1,4 @@
-# demo-t7labs
+# blog-t7labs
 
 Hi Welcome to my blog. I published some design ,animation , Landing page Templete and many more things. 
 
